@@ -1,6 +1,6 @@
-# tutorial
+# Blog template
 
-> My incredible Nuxt.js project
+> My incredible Nuxt.js project template
 
 ## Build Setup
 
