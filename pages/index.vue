@@ -11,34 +11,56 @@
 import PostList from "@/components/Posts/PostList";
 
 export default {
-  data() {
-    return {
-      loadedPosts: []
-    };
-  },
+  // data() {
+  //   return {
+  //     loadedPosts: []
+  //   };
+  // },
   components: {
     PostList
   },
-  created() {
+  asyncData(context, callback) {
     setTimeout(() => {
-      this.loadedPosts = [
-        {
-          id: '1',
-          title: "First Post",
-          previewText: "Amazing first post !",
-          thumbnail:
-            "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
-        },
-        {
-          id: '2',
-          title: "Second Post",
-          previewText: "Amazing second post !",
-          thumbnail:
-            "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
-        }
-      ]
-    }, 1500)
-  }
+      callback(null, {
+        loadedPosts: [
+          {
+            id: '1',
+            title: "First Post",
+            previewText: "Amazing first post !",
+            thumbnail:
+              "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
+          },
+          {
+            id: '2',
+            title: "Second Post",
+            previewText: "Amazing second post !",
+            thumbnail:
+              "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
+          }
+        ]
+      });
+    }, 1500);
+  },
+  // created() {
+  //   setTimeout(() => {
+  //     this.loadedPosts = [
+  //       {
+  //         id: '1',
+  //         title: "First Post",
+  //         previewText: "Amazing first post !",
+  //         thumbnail:
+  //           "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
+  //       },
+  //       {
+  //         id: '2',
+  //         title: "Second Post",
+  //         previewText: "Amazing second post !",
+  //         thumbnail:
+  //           "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
+  //       }
+  //     ]
+  //   }, 1500)
+  // }
 };
 </script>
 
