@@ -3,18 +3,38 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <PostList />
+    <PostList :posts="loadedPosts"/>
   </div>
 </template>
 
 <script>
-import PostList from '@/components/Posts/PostList';
+import PostList from "@/components/Posts/PostList";
 
 export default {
+  data() {
+    return {
+      loadedPosts: [
+        {
+          id: '1',
+          title: "First Post",
+          previewText: "Amazing first post !",
+          thumbnail:
+            "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
+        },
+        {
+          id: '2',
+          title: "Second Post",
+          previewText: "Amazing second post !",
+          thumbnail:
+            "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
+        }
+      ]
+    };
+  },
   components: {
     PostList
   }
-}
+};
 </script>
 
 <style scoped>
@@ -23,7 +43,7 @@ export default {
   position: relative;
   padding: 30px;
   box-sizing: border-box;
-  background-image: url('~assets/images/main-page-background.jpg');
+  background-image: url("~assets/images/main-page-background.jpg");
   background-position: center;
   background-size: cover;
 }
