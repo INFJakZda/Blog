@@ -1,12 +1,12 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1 class="post-title">Title of the post</h1>
+      <h1 class="post-title">{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">Last updated on XXX</div>
-        <div class="post-detail">Written by NAME</div>
+        <div class="post-detail">Last updated {{ loadedPost.updateDate }}</div>
+        <div class="post-detail">Written by {{ loadedPost.author }}</div>
       </div>
-      <p class="post-content">Content of the post</p>
+      <p class="post-content">{{ loadedPost.content }}</p>
     </section>
     <section class="post-feedback">
       <p>Let me know about the post <a 
@@ -15,6 +15,28 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPost: {
+          id: '1',
+          title: "First Post with id: " + context.params.id,
+          previewText: "Amazing first post !",
+          author: 'Jacob',
+          updateDate: new Date(),
+          content: 'Some text',
+          thumbnail:
+            "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
+        }
+      });
+    },1000);
+  }
+}
+</script>
+
 
 <style scoped>
 .single-post-page {
