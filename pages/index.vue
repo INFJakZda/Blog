@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <PostList :posts="loadedPosts"/>
+    <PostList :posts="loadedPosts" />
   </div>
 </template>
 
@@ -14,35 +14,10 @@ export default {
   components: {
     PostList
   },
-  asyncData(context) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          loadedPosts: [
-            {
-              id: "1",
-              title: "First Post",
-              previewText: "Amazing first post !",
-              thumbnail:
-                "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
-            },
-            {
-              id: "2",
-              title: "Second Post",
-              previewText: "Amazing second post !",
-              thumbnail:
-                "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
-            }
-          ]
-        });
-      }, 1500);
-    })
-      .then(data => {
-        return data;
-      })
-      .catch(e => {
-        return new Error();
-      });
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
   }
 };
 </script>
