@@ -13,7 +13,15 @@ import PostList from "@/components/Posts/PostList";
 export default {
   data() {
     return {
-      loadedPosts: [
+      loadedPosts: []
+    };
+  },
+  components: {
+    PostList
+  },
+  created() {
+    setTimeout(() => {
+      this.loadedPosts = [
         {
           id: '1',
           title: "First Post",
@@ -29,10 +37,7 @@ export default {
             "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
         }
       ]
-    };
-  },
-  components: {
-    PostList
+    }, 1500)
   }
 };
 </script>
