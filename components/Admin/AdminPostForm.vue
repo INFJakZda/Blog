@@ -9,13 +9,18 @@
       >Title</AppControlInput>
 
     <AppControlInput 
-      v-model="editedPost.thumbnailLink"
+      v-model="editedPost.thumbnail"
       >Thumbnail Link</AppControlInput>
 
     <AppControlInput 
       control-type="textarea" 
       v-model="editedPost.content"
       >Content</AppControlInput>
+
+    <AppControlInput 
+      control-type="textarea" 
+      v-model="editedPost.previewText"
+      >Preview Text</AppControlInput>
 
     <AppButton type="submit">Save</AppButton>
 
@@ -29,8 +34,8 @@
 </template>
 
 <script>
-import AppControlInput from '@/components/UI-Components/AppControlInput';
-import AppButton from '@/components/UI-Components/AppButton';
+import AppControlInput from "@/components/UI-Components/AppControlInput";
+import AppButton from "@/components/UI-Components/AppButton";
 
 export default {
   props: {
@@ -41,20 +46,23 @@ export default {
   },
   data() {
     return {
-      editedPost: this.post ? { ...this.post } : {
-        author: '',
-        title: '',
-        thumbnail: '',
-        content: ''
-      }
-    }
+      editedPost: this.post
+        ? { ...this.post }
+        : {
+            author: "",
+            title: "",
+            thumbnail: "",
+            content: "",
+            previewText: ""
+          }
+    };
   },
   methods: {
     onSave() {
-      this.$emit('submit', this.editedPost);
+      this.$emit("submit", this.editedPost);
     },
     onCancel() {
-      this.$router.push('/admin');
+      this.$router.push("/admin");
     }
   },
   components: {
