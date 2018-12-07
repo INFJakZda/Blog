@@ -3,38 +3,39 @@
     <section class="post">
       <h1 class="post-title">{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">Last updated {{ loadedPost.updateDate }}</div>
+        <div class="post-detail">Last updated {{ loadedPost.updatedDate }}</div>
         <div class="post-detail">Written by {{ loadedPost.author }}</div>
       </div>
       <p class="post-content">{{ loadedPost.content }}</p>
     </section>
     <section class="post-feedback">
-      <p>Let me know about the post <a 
-          href="mailto:zdanowski78@gmail.com">Gmail</a>
+      <p>
+        Let me know about the post
+        <a href="mailto:zdanowski78@gmail.com">Gmail</a>
       </p>
     </section>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedPost: {
-          id: '1',
-          title: "First Post with id: " + context.params.id,
-          previewText: "Amazing first post !",
-          author: 'Jacob',
-          updateDate: new Date(),
-          content: 'Some text',
-          thumbnail:
-            "https://cloud.oracle.com/opc/images/trends-hightech-5.jpg"
-        }
-      });
-    },1000);
+  asyncData(context) {
+    return axios
+      .get(
+        "https://nuxt-blog-68b5f.firebaseio.com/posts/" +
+          context.params.id +
+          ".json"
+      )
+      .then(res => {
+        return {
+          loadedPost: res.data
+        };
+      })
+      .catch(e => context.error(e));
   }
-}
+};
 </script>
 
 

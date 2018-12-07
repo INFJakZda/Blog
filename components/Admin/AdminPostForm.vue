@@ -51,7 +51,7 @@ export default {
         : {
             author: "",
             title: "",
-            thumbnail: "",
+            thumbnail: "https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg",
             content: "",
             previewText: ""
           }

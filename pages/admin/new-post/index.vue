@@ -18,9 +18,14 @@ export default {
   methods: {
     onSubmited(postData) {
       axios
-        .post("https://nuxt-blog-68b5f.firebaseio.com/posts.json", postData)
-        .then(result => console.log(result))
-        .catch(e => console.log(e));
+        .post("https://nuxt-blog-68b5f.firebaseio.com/posts.json", {
+          ...postData,
+          updatedDate: new Date()
+        })
+        .then(result => {
+          this.$router.push('/admin')
+        })
+        .catch(e => console.log());
     }
   }
 };
