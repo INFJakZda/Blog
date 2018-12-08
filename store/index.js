@@ -78,7 +78,7 @@ const createStore = () => {
           .$post(authUrl, {
             email: authData.email,
             password: authData.password,
-            returnSecureTocken: true
+            returnSecureToken: true
           })
           .then(result => {
             vuexContext.commit("setToken", result.idToken);
