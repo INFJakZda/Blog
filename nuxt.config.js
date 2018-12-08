@@ -53,6 +53,9 @@ module.exports = {
      */
     extend(config, ctx) {}
   },
+  env: {
+    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-68b5f.firebaseio.com'
+  },
   transition: {
     name: "fade",
     mode: "out-in"
