@@ -29,16 +29,20 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$axios
-        .$post(
+      let authUrl =
+        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" +
+        process.env.fbAPIkey;
+      if (!this.isLogin) {
+        authUrl =
           "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=" +
-            process.env.fbAPIkey,
-          {
-            email: this.email,
-            password: this.password,
-            returnSecureTocken: true
-          }
-        )
+          process.env.fbAPIkey;
+      }
+      this.$axios
+        .$post(authUrl, {
+          email: this.email,
+          password: this.password,
+          returnSecureTocken: true
+        })
         .then(result => {
           console.log(result);
         })
