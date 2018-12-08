@@ -34,9 +34,6 @@
 </template>
 
 <script>
-import AppControlInput from "@/components/UI-Components/AppControlInput";
-import AppButton from "@/components/UI-Components/AppButton";
-
 export default {
   props: {
     post: {
@@ -64,10 +61,6 @@ export default {
     onCancel() {
       this.$router.push("/admin");
     }
-  },
-  components: {
-    AppControlInput,
-    AppButton
   }
 };
 </script>
